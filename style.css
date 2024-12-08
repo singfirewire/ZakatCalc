@@ -36,6 +36,24 @@ input[type="number"] {
 }
 
 /* ปรับขนาดช่อง select ให้คงที่ */
+
+
+#result p {
+  margin: 5px 0;
+}
+
+#result p.not-eligible {  /*  เพิ่ม  class  ใหม่  */
+  font-size: 1.5em; /*  ปรับขนาดให้ใหญ่ขึ้น  */
+  color: blue; /*  เปลี่ยนสี  */
+  font-weight: bold; /*  เพิ่มความหนา  */
+  background-color: yellow; /*  เพิ่มสีพื้นหลัง  */
+}
+
+#result p.zakat-amount {  /*  เพิ่ม  class  ใหม่  */
+  font-size: 2em; /*  ปรับขนาดให้ใหญ่ขึ้น  */
+  color: red; /*  เปลี่ยนสี  */
+  font-weight: bold; /*  เพิ่มความหนา  */
+}
 select {
   width: 100px; /* กำหนดความกว้างคงที่ */
   padding: 10px;
