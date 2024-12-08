@@ -1,161 +1,325 @@
 /* style.css */
 body {
-    font-family: 'Kanit', sans-serif; /* ใช้ font Kanit */
-    margin: 0; 
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; 
-    background-color: #f4f4f4; /* เปลี่ยนสีพื้นหลัง */
+  font-family: sans-serif;
+  margin: 0; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
 }
 
 header, main, footer {
-    padding: 20px;
+  padding: 20px;
 }
 
 h1, h2 {
-    text-align: center;
-    color: #333; /* เปลี่ยนสี heading */
-}
-
-.container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* เพิ่ม shadow */
-    max-width: 800px; /* กำหนดความกว้างสูงสุด */
-    width: 100%;
-    margin: 0 auto; /* จัดให้อยู่กึ่งกลาง */
+  text-align: center;
 }
 
 .input-group {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
+/* ปรับขนาดช่อง input ให้คงที่ */
 input[type="number"] {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box; 
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 120px; /* กำหนดความกว้างคงที่ */
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
+/* ปรับขนาดช่อง select ให้คงที่ */
 select {
-    width: 100px;
-    padding: 10px;
-    box-sizing: border-box; 
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100px; /* กำหนดความกว้างคงที่ */
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 .input-row {
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
 }
 
 button {
-    background-color: #4CAF50; /* เปลี่ยนสีปุ่ม */
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-button:hover {
-    background-color: #45a049; /* เพิ่ม hover effect */
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  input[type="number"], select {
+      font-size: 16px; 
+  }
+
+  .input-row {
+      flex-direction: column; 
+      align-items: flex-start; 
+  }
+
+  button {
+      font-size: 16px; 
+  }
 }
 
-.lang-menu {
-    display: flex;
-    justify-content: flex-end; /* จัดปุ่มภาษาไปด้านขวา */
-    margin-bottom: 20px;
+nav {
+  text-align: center; /* จัดเมนูให้อยู่กึ่งกลาง */
+  margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
 }
 
-.lang-menu button {
-    margin-left: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม */
+nav a {
+  display: inline-block; /* จัดเมนูให้อยู่ในบรรทัดเดียวกัน */
+  margin: 0 10px; /* ระยะห่างระหว่างเมนู */
+  text-decoration: none; /* ลบเส้นใต้ */
 }
 
+/* style for foreign currency section */
 .foreign-currency {
-    border: 1px solid #ccc;
-    padding: 20px; 
-    margin-bottom: 20px; 
-    background-color: #f9f9f9; 
-    border-radius: 5px; 
+border: 1px solid #ccc;
+padding: 20px; 
+margin-bottom: 20px; 
+background-color: #f9f9f9; 
+border-radius: 5px; 
 }
 
 .foreign-currency h3 {
-    text-align: center; 
-    margin-bottom: 10px; 
-    cursor: pointer;
+text-align: center; 
+margin-bottom: 10px; 
+cursor: pointer;
 }
 
+/*  ซ่อน  input  ไว้  ตอนเริ่มต้น */
 #foreign-currency-inputs {
-    display: none; 
+display: none; 
+/*overflow: hidden;
+transition: max-height 0.3s ease-out;*/
 }
 
+/*  จัดรูปแบบข้อความแสดงผล  */
 #result {
-    text-align: center;
-    margin-top: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 #result p {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
-#result p:first-child { 
-    font-size: 1.2em;
-    font-weight: bold; 
+/*  ปรับขนาด  "จำนวนซะกาตที่ต้องจ่าย"  */
+#result p:first-child { /*  เลือก  p  tag  แรก  */
+  font-size: 1.2em; /*  ปรับขนาดให้ใหญ่ขึ้น  */
+  font-weight: bold; /*  เพิ่มความหนา  */
 }
 
+/*  ปรับขนาด  "จำนวนทรัพย์สินทั้งหมด"  */
 #result .total-assets {
-    font-size: 0.8em;
-    color: #777;
+  font-size: 0.8em; /*  ปรับขนาดให้เล็กลง  */
+  color: #777;
 }
 
-.intro {
-    background-color: #f9f9f9; /* เพิ่มสีพื้นหลัง */
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
+/*  ปรับขนาดและสี  h2  และ  p  ในส่วน  intro  */
 .intro h2 {
-    font-size: 1.8em;
-    color: #333; /* เปลี่ยนสี heading */
+  font-size: 1.8em; /*  ปรับขนาดให้เล็กลง  */
+  color: #555; /*  ปรับสีให้จางลง  */
 }
 
 .intro p {
-    font-size: 1.2em;
-    line-height: 1.6; /* ปรับระยะห่างบรรทัด */
+  font-size: 0.9em; /*  ปรับขนาดให้เล็กลง  */
+  color: #777; /*  ปรับสีให้จางลง  */
 }
 
-.quotes {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
+/*  ปรับขนาดและสี  div  ในส่วน  quotes  */
 .quotes div {
-    font-size: 1.4em;
-    margin-bottom: 10px;
+  font-size: 1.2em; /*  ปรับขนาดให้เล็กลง  */
+  color: #666; /*  ปรับสีให้จางลง  */
 }
 
-footer {
-    background-color: #333; /* เปลี่ยนสีพื้นหลัง */
-    color: #fff; /* เปลี่ยนสีข้อความ */
-    text-align: center;
-    padding: 10px 0; /* ปรับ padding */
+/*  จัดตำแหน่งเมนูภาษา  */
+.lang-menu {
+  text-align: right; /*  จัดชิดขวา  */
+  margin-bottom: 10px; /*  เพิ่มระยะห่าง  */
 }
 
-footer nav a {
-    color: #fff; /* เปลี่ยนสีลิงก์ */
-    margin: 0 10px; /* ปรับระยะห่าง */
+.lang-menu button {
+  background-color: #eee; /*  เปลี่ยนสีพื้นหลัง  */
+  color: #333; /*  เปลี่ยนสีตัวอักษร  */
+  border: none;
+  padding: 5px 10px; /*  ปรับขนาด  */
+  cursor: pointer;
+/* style.css */
+body {
+  font-family: sans-serif;
+  margin: 0; 
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
 }
+
+header, main, footer {
+  padding: 20px;
+}
+
+h1, h2 {
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* ปรับขนาดช่อง input ให้คงที่ */
+input[type="number"] {
+  width: 120px; /* กำหนดความกว้างคงที่ */
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ปรับขนาดช่อง select ให้คงที่ */
+select {
+  width: 100px; /* กำหนดความกว้างคงที่ */
+  padding: 10px;
+  box-sizing: border-box; 
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.input-row {
+  display: flex; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 600px) {
+  input[type="number"], select {
+      font-size: 16px; 
+  }
+
+  .input-row {
+      flex-direction: column; 
+      align-items: flex-start; 
+  }
+
+  button {
+      font-size: 16px; 
+  }
+}
+
+nav {
+  text-align: center; /* จัดเมนูให้อยู่กึ่งกลาง */
+  margin-top: 20px; /* เพิ่มระยะห่างด้านบน */
+}
+
+nav a {
+  display: inline-block; /* จัดเมนูให้อยู่ในบรรทัดเดียวกัน */
+  margin: 0 10px; /* ระยะห่างระหว่างเมนู */
+  text-decoration: none; /* ลบเส้นใต้ */
+}
+
+/* style for foreign currency section */
+.foreign-currency {
+border: 1px solid #ccc;
+padding: 20px; 
+margin-bottom: 20px; 
+background-color: #f9f9f9; 
+border-radius: 5px; 
+}
+
+.foreign-currency h3 {
+text-align: center; 
+margin-bottom: 10px; 
+cursor: pointer;
+}
+
+/*  ซ่อน  input  ไว้  ตอนเริ่มต้น */
+#foreign-currency-inputs {
+display: none; 
+/*overflow: hidden;
+transition: max-height 0.3s ease-out;*/
+}
+
+/*  จัดรูปแบบข้อความแสดงผล  */
+#result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#result p {
+  margin: 5px 0;
+}
+
+/*  ปรับขนาด  "จำนวนซะกาตที่ต้องจ่าย"  */
+#result p:first-child { /*  เลือก  p  tag  แรก  */
+  font-size: 1.2em; /*  ปรับขนาดให้ใหญ่ขึ้น  */
+  font-weight: bold; /*  เพิ่มความหนา  */
+}
+
+/*  ปรับขนาด  "จำนวนทรัพย์สินทั้งหมด"  */
+#result .total-assets {
+  font-size: 0.8em; /*  ปรับขนาดให้เล็กลง  */
+  color: #777;
+}
+
+/*  ปรับขนาดและสี  h2  และ  p  ในส่วน  intro  */
+.intro h2 {
+  font-size: 1.8em; /*  ปรับขนาดให้เล็กลง  */
+  color: #555; /*  ปรับสีให้จางลง  */
+}
+
+.intro p {
+  font-size: 0.9em; /*  ปรับขนาดให้เล็กลง  */
+  color: #777; /*  ปรับสีให้จางลง  */
+}
+
+/*  ปรับขนาดและสี  div  ในส่วน  quotes  */
+.quotes div {
+  font-size: 1.2em; /*  ปรับขนาดให้เล็กลง  */
+  color: #666; /*  ปรับสีให้จางลง  */
+}
+
+/*  จัดตำแหน่งเมนูภาษา  */
+.lang-menu {
+  text-align: right; /*  จัดชิดขวา  */
+  margin-bottom: 10px; /*  เพิ่มระยะห่าง  */
+}
+
+.lang-menu button {
+  background-color: #eee; /*  เปลี่ยนสีพื้นหลัง  */
+  color: #333; /*  เปลี่ยนสีตัวอักษร  */
+  border: none;
+  padding: 5px 10px; /*  ปรับขนาด  */
+  cursor: pointer;
+}}
