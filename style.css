@@ -7,6 +7,10 @@ h2 {
   margin-top: -20px; /*  หรือค่าที่ต้องการ  */
 }
 
+            .intro h2 {
+  font-size: 1.5em;  /*  หรือขนาดที่ต้องการ  */
+}
+
 
 /* style.css */
 body {
