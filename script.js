@@ -4,6 +4,12 @@ const arabicQuotes = [
   // ... เพิ่มข้อความอื่นๆ
 ];
 
+if (totalAssets >= nisab) {
+    resultHTML += `<p class="zakat-amount">จำนวนซะกาตที่ต้องจ่าย: ${zakat.toLocaleString('th-TH', { style: 'currency', currency: 'THB' })}</p>`;
+} else {
+    resultHTML += `<p class="not-eligible">ยังไม่ถึงเกณฑ์เสียซะกาต เราขอดุอาร์ขอให้ท่านร่ำรวย เพื่อจะได้ช่วยเหลือคนอื่นต่อไป</p>`; 
+}
+
 const translations = {
   th: {
     title: "คำนวณและจ่ายซะกาต",
