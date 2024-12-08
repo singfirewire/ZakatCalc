@@ -1,3 +1,13 @@
+
+.tagline {
+  font-size: 14px; /*  หรือขนาดที่ต้องการ  */
+}
+
+h2 {
+  margin-top: -20px; /*  หรือค่าที่ต้องการ  */
+}
+
+
 /* style.css */
 body {
   font-family: sans-serif;
