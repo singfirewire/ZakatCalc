@@ -10,7 +10,9 @@ h2 {
             .intro h2 {
   font-size: 1.5em;  /*  หรือขนาดที่ต้องการ  */
 }
-
+#zakat-meaning {
+  font-size: 1.5em;  /*  หรือขนาดที่ต้องการ  */
+}
 
 /* style.css */
 body {
