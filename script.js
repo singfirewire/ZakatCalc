@@ -45,7 +45,7 @@ function calculateZakat() {
     const zakat = totalAssets * 0.025;
     resultHTML += `<p class="zakat-amount">จำนวนซะกาตที่ต้องจ่าย: ${zakat.toLocaleString('th-TH', { style: 'currency', currency: 'THB' })}</p>`;
   } else {
-    resultHTML += `<p class="not-eligible">ยังไม่ถึงเกณฑ์เสียซะกาต เราขอดุอาร์ขอให้ท่านร่ำรวย เพื่อจะได้ช่วยเหลือคนอื่นต่อไป</p>`;
+    resultHTML += `<p class="not-eligible">"ท่านยังไม่ถึงเกณฑ์ที่จะต้องจ่ายซะกาต" เราขอดุอาร์ขอให้ท่านร่ำรวย เพื่อจะได้ช่วยเหลือคนอื่นต่อไป</p>`;
   }
 
   // แสดงจำนวนทรัพย์สินทั้งหมด (อยู่ใต้จำนวนซะกาตที่ต้องจ่าย)
