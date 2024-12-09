@@ -1,51 +1,8 @@
 const arabicQuotes = [
   { arabic: "اللَّهُ نُورُ السَّمَاوَاتِ وَالْأَرْضِ", thai: "อัลลอฮ์คือแสงสว่างแห่งชั้นฟ้าทั้งหลายและแผ่นดิน" },
   { arabic: "إِنَّ اللَّهَ مَعَ الصَّابِرِينَ", thai: "แท้จริงอัลลอฮ์ทรงอยู่กับผู้มีความอดทน" },
-  // ... เพิ่มข้อความอื่นๆ
+  // ... เพิ่มเติมข้อความอัลกุรอ่านหรือหะดีษที่ต้องการ
 ];
-
-const translations = {
-  th: {
-    title: "คำนวณและจ่ายซะกาต",
-    tagline: "คำนวณซะกาตของคุณอย่างง่ายดาย และถูกต้องตามหลักศาสนา",
-    calculator: "คำนวณซะกาต",
-    goldPrice: "ราคาทองคำ (บาท):",
-    cashTHB: "เงินสด (บาท):",
-    gold: "ทองคำ (บาท/กรัม):",
-    foreignCurrency: "▼ คลิกเพื่อคำนวนทรัพย์สินอื่นๆ ▼",
-    cash: "เงินสด:",
-    exchangeRate: "อัตราแลกเปลี่ยน:",
-    calculate: "คำนวณ",
-    zakatMeaning: "ซะกาตคืออะไร?",
-    zakatDesc: "ซะกาต คือ การบริจาคทรัพย์สินส่วนหนึ่งตามที่ศาสนาอิสลามกำหนดให้แก่ผู้มีสิทธิ์ได้รับ เพื่อเป็นการชำระล้างทรัพย์สินและจิตใจ",
-    aboutUs: "เกี่ยวกับเรา",
-    faq: "คำถามที่พบบ่อย",
-    contactUs: "ติดต่อเรา",
-    zakatOrg: "องค์กรที่รับจ่ายซะกาต",
-    registerReceive: "ลงทะเบียนรับซะกาต",
-    registerRequest: "รายชื่อท่านลงทะเบียนขอรับซะกาต"
-  },
-  "ms-jawi": {
-    title: "Kira dan Bayar Zakat",
-    tagline: "Kira zakat anda dengan mudah dan tepat mengikut hukum syarak",
-    calculator: "Kira Zakat",
-    goldPrice: "Harga Emas (Baht):",
-    cashTHB: "Tunai (Baht):",
-    gold: "Emas (Baht/gram):",
-    foreignCurrency: "▼ Klik untuk mengira aset lain ▼",
-    cash: "Tunai:",
-    exchangeRate: "Kadar Pertukaran:",
-    calculate: "Kira",
-    zakatMeaning: "Apakah Zakat?",
-    zakatDesc: "Zakat ialah pemberian sebahagian harta yang ditetapkan oleh agama Islam kepada mereka yang berhak menerimanya, sebagai pembersihan harta dan jiwa",
-    aboutUs: "Tentang Kami",
-    faq: "Soalan Lazim",
-    contactUs: "Hubungi Kami",
-    zakatOrg: "Organisasi Zakat",
-    registerReceive: "Daftar Penerima Zakat",
-    registerRequest: "Senarai Pemohon Zakat"
-  }
-};
 
 function displayRandomQuote() {
   const randomIndex = Math.floor(Math.random() * arabicQuotes.length);
@@ -86,9 +43,9 @@ function calculateZakat() {
   if (totalAssets >= nisab) {
     // คำนวณซะกาต
     const zakat = totalAssets * 0.025;
-    resultHTML += `<p>จำนวนซะกาตที่ต้องจ่าย: ${zakat.toLocaleString('th-TH', { style: 'currency', currency: 'THB' })}</p>`;
+    resultHTML += `<p class="zakat-amount">จำนวนซะกาตที่ต้องจ่าย: ${zakat.toLocaleString('th-TH', { style: 'currency', currency: 'THB' })}</p>`;
   } else {
-    resultHTML += `<p>ยังไม่ถึงเกณฑ์เสียซะกาต เราขอดุอาร์ขอให้ท่านร่ำรวย เพื่อจะได้ช่วยเหลือคนอื่นต่อไป</p>`;
+    resultHTML += `<p class="not-eligible">"ท่านยังไม่ถึงเกณฑ์ที่จะต้องจ่ายซะกาต" เราขอดุอาร์ขอให้ท่านร่ำรวย เพื่อจะได้ช่วยเหลือคนอื่นต่อไป</p>`;
   }
 
   // แสดงจำนวนทรัพย์สินทั้งหมด (อยู่ใต้จำนวนซะกาตที่ต้องจ่าย)
@@ -118,7 +75,7 @@ function fetchGoldPrice() {
   // ลองดึงข้อมูลจาก goldapi.io ก่อน
   fetch('https://www.goldapi.io/api/XAU/THB', {
     headers: {
-      'x-access-token': 'GOLDAPI_KEY'
+      'x-access-token': 'GOLDAPI_KEY' // **ต้องใส่ API Key ของคุณเอง**
     }
   })
     .then(response => response.json())
@@ -140,8 +97,7 @@ function fetchGoldPrice() {
           console.error('เกิดข้อผิดพลาดในการดึงข้อมูลจาก API สมาคมค้าทองคำ:', error);
 
           // ถ้าดึงจาก API สมาคมค้าทองคำไม่ได้ ให้ลองดึงจาก Data API (WebSocket)
-          const socket = new WebSocket('wss://ws.finanzen.net/ws/stream'); 
-
+          const socket = new WebSocket('wss://ws.finanzen.net/ws/stream');
           socket.onopen = function(event) {
             const msg = {
               "m": "sub",
@@ -160,7 +116,6 @@ function fetchGoldPrice() {
 
           socket.onerror = function(error) {
             console.error('เกิดข้อผิดพลาดในการเชื่อมต่อ WebSocket:', error);
-
             // ถ้าดึงจาก Data API ไม่ได้อีก ให้แสดงข้อความแจ้งเตือน
             alert("ดึงข้อมูลราคาทองไม่สำเร็จ");
             // กลับไปใช้ค่าเริ่มต้น (43000.00)
@@ -272,3 +227,46 @@ document.getElementById('lang-th').addEventListener('click', function () {
 document.getElementById('lang-ms-jawi').addEventListener('click', function () {
   changeLanguage('ms-jawi');
 });
+
+const translations = {
+  th: {
+    title: "คำนวณและจ่ายซะกาต",
+    tagline: "คำนวณซะกาตของคุณอย่างง่ายดาย และถูกต้องตามหลักศาสนา",
+    calculator: "คำนวณซะกาต",
+    goldPrice: "ราคาทองคำ (บาท):",
+    cashTHB: "เงินสด (บาท):",
+    gold: "ทองคำ (บาท/กรัม):",
+    foreignCurrency: "▼ คลิกเพื่อคำนวนทรัพย์สินอื่นๆ ▼",
+    cash: "เงินสด:",
+    exchangeRate: "อัตราแลกเปลี่ยน:",
+    calculate: "คำนวณ",
+    zakatMeaning: "ซะกาตคืออะไร?",
+    zakatDesc: "ซะกาต คือ การบริจาคทรัพย์สินส่วนหนึ่งตามที่ศาสนาอิสลามกำหนดให้แก่ผู้มีสิทธิ์ได้รับ เพื่อเป็นการชำระล้างทรัพย์สินและจิตใจ",
+    aboutUs: "เกี่ยวกับเรา",
+    faq: "คำถามที่พบบ่อย",
+    contactUs: "ติดต่อเรา",
+    zakatOrg: "องค์กรที่รับจ่ายซะกาต",
+    registerReceive: "ลงทะเบียนรับซะกาต",
+    registerRequest: "รายชื่อท่านลงทะเบียนขอรับซะกาต"
+  },
+  "ms-jawi": {
+    title: "Kira dan Bayar Zakat",
+    tagline: "Kira zakat anda dengan mudah dan tepat mengikut hukum syarak",
+    calculator: "Kira Zakat",
+    goldPrice: "Harga Emas (Baht):",
+    cashTHB: "Tunai (Baht):",
+    gold: "Emas (Baht/gram):",
+    foreignCurrency: "▼ Klik untuk mengira aset lain ▼",
+    cash: "Tunai:",
+    exchangeRate: "Kadar Pertukaran:",
+    calculate: "Kira",
+    zakatMeaning: "Apakah Zakat?",
+    zakatDesc: "Zakat ialah pemberian sebahagian harta yang ditetapkan oleh agama Islam kepada mereka yang berhak menerimanya, sebagai pembersihan harta dan jiwa",
+    aboutUs: "Tentang Kami",
+    faq: "Soalan Lazim",
+    contactUs: "Hubungi Kami",
+    zakatOrg: "Organisasi Zakat",
+    registerReceive: "Daftar Penerima Zakat",
+    registerRequest: "Senarai Pemohon Zakat"
+  }
+};

@@ -1,119 +1,103 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คำนวณและจ่ายซะกาต</title>
-    <link rel="stylesheet" href="style.css"> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณซะกาตอย่างง่าย</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-<<<<<<< HEAD
     <div class="container"> 
         <header>
             <div class="lang-menu">
                 <button id="lang-th" onclick="changeLanguage('th')">ไทย</button>
-                <button id="lang-ms-jawi" onclick="changeLanguage('ms-jawi')">Melayu Jawi</button>
+                <button id="lang-ms-jawi" onclick="changeLanguage('ms-jawi')">Melayu</button>
             </div>
             <h1 id="page-title"> </h1> 
-            <p class="tagline" id="tagline-text">หน้าเว็บนี้จะไม่มีการเก็บข้อมูลใดๆไว้ ท่านกรอบข้อมูลได้อย่างสบายใจ</p>
+            <p class="tagline" id="tagline-text">* หน้าเว็บนี้จะไม่มีการเก็บข้อมูลใดๆไว้</p>
         </header>
-=======
-    <div class="container"> 
-        <header>
-            <div class="lang-menu">
-                <button id="lang-th" onclick="changeLanguage('th')">ไทย</button>
-                <button id="lang-ms-jawi" onclick="changeLanguage('ms-jawi')">Melayu Jawi</button>
-            </div>
-            <h1 id="page-title">คำนวณและจ่ายซะกาต</h1> 
-            <p class="tagline" id="tagline-text">คำนวณซะกาตของคุณอย่างง่ายดาย  และถูกต้องตามหลักศาสนา</p>
-        </header>
->>>>>>> parent of d6b79c5 (Revert "Update index.html")
 
-        <main>
-            <section class="calculator">
-                <h2 id="calculator-heading">คำนวณซะกาต</h2>
-                <form id="zakat-form">
-                    <div class="input-group">
-                        <label for="gold-price" id="gold-price-label">ราคาทองคำ (บาท):</label> 
-                        <div class="input-row"> 
-                            <input type="number" id="gold-price" value="43000.00">
-                            <button type="button" id="fetch-gold-price">อัพเดทราคาทอง</button>
-                        </div>
-                    </div>
-
-<<<<<<< HEAD
+        <main>
+            <section class="calculator">
+                <h2 id="calculator-heading">ระบุทรัพย์สิน</h2>
+                <form id="zakat-form">
                     <div class="input-group">
-                        <label for="cash-thb" id="cash-thb-label">เงินสด (บาท):</label> 
+                        <label for="gold-price" id="gold-price-label">ราคาทองคำ (ทอง 96.5 %):</label> 
+                        <div class="input-row"> 
+                            <input type="number" id="gold-price" value="43000.00">
+                            <button type="button" id="fetch-gold-price">อัพเดทราคาทอง</button>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cash-thb" id="cash-thb-label">เงินเก็บที่ครบปี(บาท):</label> 
                         <input type="number" id="cash-thb" value="0">
                     </div>
-=======
-                    <div class="input-group">
-                        <label for="cash-thb" id="cash-thb-label">เงินสด (บาท):</label> 
-                        <input type="number" id="cash-thb" value="0">
-                    </div>
->>>>>>> parent of d6b79c5 (Revert "Update index.html")
 
-                    <div class="input-group">
-                        <label for="gold" id="gold-label">ทองคำ (บาท/กรัม):</label> 
-                        <div class="input-row">
-                            <input type="number" id="gold" value="0">
-                            <select id="gold-unit">
-                                <option value="baht">บาท</option>
-                                <option value="gram">กรัม</option>
-                            </select>
-                        </div>
-                    </div>
+                    <div class="input-group">
+                        <label for="gold" id="gold-label">ทองคำที่เก็บสะสม(บาท/กรัม):</label> 
+                        <div class="input-row">
+                            <input type="number" id="gold" value="0">
+                            <select id="gold-unit">
+                                <option value="baht">บาท</option>
+                                <option value="gram">กรัม</option>
+                            </select>
+                        </div>
+                    </div>
 
-                    <div class="foreign-currency"> 
-                        <h3 onclick="toggleForeignCurrency()">▼ คลิกเพื่อคำนวนทรัพย์สินอื่นๆ ▼</h3> 
-                        <div id="foreign-currency-inputs">
-                            <div class="input-group">
-                                <label for="cash-foreign-1">เงินสด:</label> 
-                                <div class="input-row">
-                                    <input type="number" id="cash-foreign-1" value="0">
-                                    <select id="currency-1">
-                                        <option value="MYR">MYR</option>
-                                        <option value="USD">USD</option>
-                                    </select>
-                                    <button type="button" onclick="fetchExchangeRate('currency-1', 'exchange-rate-1')">อัพเดทราคา</button> 
-                                </div>
-                                <div class="input-row">
-                                    <label for="exchange-rate-1">อัตราแลกเปลี่ยน:</label> 
-                                    <input type="number" id="exchange-rate-1" value="7.77">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="foreign-currency"> 
+                        <h3 onclick="toggleForeignCurrency()">▼ ทรัพย์สินอื่นๆ ▼</h3> 
+                        <div id="foreign-currency-inputs">
+                            <div class="input-group">
+                                <label for="cash-foreign-1">เงินสด:</label> 
+                                <div class="input-row">
+                                    <input type="number" id="cash-foreign-1" value="0">
+                                    <select id="currency-1">
+                                        <option value="MYR">MYR</option>
+                                        <option value="USD">USD</option>
+                                    </select>
+                                    <button type="button" onclick="fetchExchangeRate('currency-1', 'exchange-rate-1')">อัพเดทราคา</button> 
+                                </div>
+                                <div class="input-row">
+                                    <label for="exchange-rate-1">อัตราแลกเปลี่ยน:</label> 
+                                    <input type="number" id="exchange-rate-1" value="7.77">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                    <button type="button" onclick="calculateZakat()">คำนวณ</button>
-                </form>
-                <div id="result"></div>
-            </section>
+                    <button type="button" onclick="calculateZakat()">คำนวณ</button>
+                </form>
+                <div id="result"></div>
+            </section>
 
-            <section class="intro"> 
-                <h2 id="zakat-meaning">ซะกาตคืออะไร?</h2>
-                <p id="zakat-desc">ซะกาต คือ การบริจาคทรัพย์สินส่วนหนึ่งตามที่ศาสนาอิสลามกำหนดให้แก่ผู้มีสิทธิ์ได้รับ เพื่อเป็นการชำระล้างทรัพย์สินและจิตใจ</p>
-            </section>
 
-            <section class="quotes">
-                <div id="arabic-text"></div>
-                <div id="thai-translation"></div>
-            </section>
-        </main>
 
-        <footer>
-            <nav>
-                <a href="#" id="about-us">เกี่ยวกับเรา</a> |
-                <a href="#" id="faq">คำถามที่พบบ่อย</a> |
-                <a href="#" id="contact-us">ติดต่อเรา</a> |
-                <a href="#" id="zakat-org">องค์กรที่รับจ่ายซะกาต</a> |
-                <a href="#" id="register-receive">ลงทะเบียนรับซะกาต</a> |
-                <a href="#" id="register-request">รายชื่อท่านลงทะเบียนขอรับซะกาต</a>
-            </nav>
-            <p>&copy; 2023 - เวอร์ชั่น  DEMO 0.0.1.11</p> 
-        </footer>
-    </div> 
+            <section class="intro"> 
+                <h2 id="zakat-meaning">ซะกาตคืออะไร?</h2>
+                <p id="zakat-desc">ซะกาต คือ การบริจาคทรัพย์สินส่วนหนึ่งตามที่ศาสนาอิสลามกำหนดให้แก่ผู้มีสิทธิ์ได้รับ เพื่อเป็นการชำระล้างทรัพย์สินและจิตใจ</p>
+            </section>
 
-    <script src="script.js"></script> 
+            <section class="quotes">
+                <div id="arabic-text"></div>
+                <div id="thai-translation"></div>
+            </section>
+        </main>
+
+        <footer>
+            <nav>
+      <a href="#" id="zakat-org">องค์กรที่รับจ่ายซะกาต</a> |
+                <a href="#" id="register-receive">ลงทะเบียนรับซะกาต</a> |
+                <a href="#" id="register-request">รายชื่อท่านลงทะเบียนขอรับซะกาต</a>
+                <a href="#" id="about-us">เกี่ยวกับเรา</a> |
+                <a href="#" id="faq">คำถามที่พบบ่อย</a> |
+                <a href="#" id="contact-us">ติดต่อเรา</a> |
+          
+            </nav>
+            <p>&copy; 2023 - เวอร์ชั่น  DEMO 0.0.1.11</p> 
+        </footer>
+    </div> 
+
+    <script src="script.js"></script> 
 </body>
 </html>
