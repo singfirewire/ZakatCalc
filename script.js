@@ -231,7 +231,7 @@ document.getElementById('lang-ms-jawi').addEventListener('click', function () {
 const translations = {
   th: {
     title: "",
-    tagline: "คำนวณซะกาตของคุณอย่างง่ายดาย และถูกต้องตามหลักศาสนา",
+    tagline: "* หน้าเว็บนี้จะไม่มีการเก็บข้อมูลใดๆไว้",
     calculator: "คำนวณซะกาต",
     goldPrice: "ราคาทองคำ (บาท):",
     cashTHB: "เงินสด (บาท):",
