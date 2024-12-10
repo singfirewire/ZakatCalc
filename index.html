@@ -9,10 +9,6 @@
 <body>
     <div class="container"> 
         <header>
-            <div class="lang-menu">
-                <button id="lang-th" onclick="changeLanguage('th')">ไทย</button>
-                <button id="lang-ms-jawi" onclick="changeLanguage('ms-jawi')">Melayu</button>
-            </div>
             <h1 id="page-title"> </h1> 
             <p class="tagline" id="tagline-text">* หน้าเว็บนี้จะไม่มีการเก็บข้อมูลใดๆไว้</p>
         </header>
@@ -30,14 +26,14 @@
 
                     <div class="input-group">
                         <label for="cash-thb" id="cash-thb-label">เงินเก็บที่ครบปี(บาท):</label> 
-                        <input type="number" id="cash-thb" value="0">
+                        <input type="number" id="cash-thb" value="0" oninput="calculateZakat()">
                     </div>
 
                     <div class="input-group">
                         <label for="gold" id="gold-label">ทองคำที่เก็บสะสม(บาท/กรัม):</label> 
                         <div class="input-row">
-                            <input type="number" id="gold" value="0">
-                            <select id="gold-unit">
+                            <input type="number" id="gold" value="0" oninput="calculateZakat()">
+                            <select id="gold-unit" onchange="calculateZakat()">
                                 <option value="baht">บาท</option>
                                 <option value="gram">กรัม</option>
                             </select>
@@ -50,8 +46,8 @@
                             <div class="input-group">
                                 <label for="cash-foreign-1">สกุลเงินต่างประเทศ:</label> 
                                 <div class="input-row">
-                                    <input type="number" id="cash-foreign-1" value="0">
-                                    <select id="currency-1">
+                                    <input type="number" id="cash-foreign-1" value="0" oninput="calculateZakat()">
+                                    <select id="currency-1" onchange="calculateZakat()">
                                         <option value="MYR">MYR</option>
                                         <option value="USD">USD</option>
                                     </select>
@@ -59,18 +55,15 @@
                                 </div>
                                 <div class="input-row">
                                     <label for="exchange-rate-1">อัตราแลกเปลี่ยน:</label> 
-                                    <input type="number" id="exchange-rate-1" value="7.77">
+                                    <input type="number" id="exchange-rate-1" value="7.77" oninput="calculateZakat()">
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <button type="button" onclick="calculateZakat()">คำนวณ</button>
+                    <div id="result"></div> 
                 </form>
-                <div id="result"></div>
             </section>
-
-
 
             <section class="intro"> 
                 <h2 id="zakat-meaning">ซะกาตคืออะไร?</h2>
